@@ -11,7 +11,10 @@ int main(int argc, char **argv)
 	/* Attempt to connect to X server, exit with error if unsuccessful */
 	disp = xcb_connect(NULL, NULL);
 	if (xcb_connection_has_error(disp))
+	{
+		fprintf(stderr, "ERROR: Cannot connect to X server!\n");
 		return 1;
+	}
 	
 	/* Get root of first screen. Currently only supports one screen. */
 	scr = xcb_setup_roots_iterator(xcb_get_setup(disp)).data;
@@ -20,7 +23,7 @@ int main(int argc, char **argv)
 	/* There can be only one! */
 	if(detect_window_manager(disp, scr))
 	{
-	     printf("Another window manager is currntly running\n");
+	     fprintf(stderr, "ERROR: Another window manager is currently running!\n");
 	     return 1;
 	}
 	
