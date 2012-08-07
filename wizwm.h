@@ -13,7 +13,10 @@
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
-/* Detect presence of another window manager */
-static xcb_window_t detect_window_manager(xcb_connection_t *connection, xcb_screen_t *screen);
+/* Detect presence of another window manager. */
+static xcb_window_t detect_window_manager(xcb_connection_t *connection, xcb_screen_t *screen, int index);
+
+/* Select events for the root window so that window management can begin. */
+static void init(xcb_connection_t *connection, xcb_screen_t *screen);
 
 #endif
