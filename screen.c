@@ -49,7 +49,7 @@ void init(xcb_connection_t *connection, xcb_screen_t *screen)
 	xcb_change_window_attributes(connection, screen->root, XCB_CW_EVENT_MASK, events);
 }
 
-xcb_connection_t* connectToXServer(void)
+xcb_connection_t *connectToXServer(void)
 {
 	/* Attempt to connect to X server, exit with error if unsuccessful */
 	xcb_connection_t *connection = xcb_connect(NULL, NULL);
