@@ -10,7 +10,7 @@
 #include <xcb/xcb.h>
 
 /* Attempts to connect to X server and exits upon failure. */
-xcb_connection_t *connectToXServer(void);
+xcb_connection_t *connect_to_x_server(void);
 
 /* Detect presence of another window manager. */
 xcb_window_t detect_window_manager(xcb_connection_t *connection, xcb_screen_t *screen, int index);
