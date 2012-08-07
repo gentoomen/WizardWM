@@ -5,6 +5,7 @@
 /* Standard library */
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 /* XCB header files */
 #include <xcb/xcb.h>
