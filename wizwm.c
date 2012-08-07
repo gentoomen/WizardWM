@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-	xcb_connection_t *connection = connect_to_x_server();
+	xcb_connection_t *connection = connect_to_x_server(argv[1]); /* argv[1] will be NULL if argc==1 */
 
 	/* Iterate over each screen and attempt to manage it */
 	/* This is quite verbose but I can't find a more elegant way to do it */

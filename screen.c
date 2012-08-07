@@ -49,10 +49,10 @@ void init(xcb_connection_t *connection, xcb_screen_t *screen)
 	xcb_change_window_attributes(connection, screen->root, XCB_CW_EVENT_MASK, events);
 }
 
-xcb_connection_t *connect_to_x_server(void)
+xcb_connection_t *connect_to_x_server(const char *displayname)
 {
 	/* Attempt to connect to X server, exit with error if unsuccessful */
-	xcb_connection_t *connection = xcb_connect(NULL, NULL);
+	xcb_connection_t *connection = xcb_connect(displayname, NULL);
 	if (xcb_connection_has_error(connection)) {
 		fprintf(stderr, "Failed to connect to X server\n");
 		exit(1);
