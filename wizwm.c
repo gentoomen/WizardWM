@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 
 		/* There can be only one! */
 		if(detect_window_manager(connection, screen, i)) {
-			fprintf(stderr, "Another window manager is currntly running on screen %d\n", i);
+			fprintf(stderr, "Another window manager is currently running on screen %d\n", i);
 			return 1;
 		}
 
@@ -21,6 +21,16 @@ int main(int argc, char **argv)
 		init(connection, screen);
 		xcb_screen_next(&iter);
 	}
+
+	xcb_flush(connection);
+
+	/* Wait for events */
+	xcb_generic_event_t *event;
+	while((event = xcb_wait_for_event(connection))) {
+		free(event);
+	}
+
+	xcb_disconnect(connection);
 
 	return 0;
 }
